@@ -9,16 +9,19 @@ import {
   Value,
 } from './styled';
 
-export default function Details({navigation, item}) {
+export default function AdList({navigation, item}) {
   return (
     <>
       <Advertisement>
         <Header>
           <Title>{item.title}</Title>
-          <Value>$ {item.value}</Value>
+          <Value>$ {item.value}.00</Value>
         </Header>
         <Photo source={{uri: item.image}} />
-        <Button>
+        <Button
+          onPress={() => {
+            navigation(item);
+          }}>
           <TextButton>Click for Details</TextButton>
         </Button>
       </Advertisement>

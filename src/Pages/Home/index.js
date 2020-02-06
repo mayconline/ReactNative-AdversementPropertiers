@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, SafeAreaView} from 'react-native';
+import {FlatList} from 'react-native';
 import Adlist from '../../Components/AdList';
 import api from '../../Services/Api';
+import {Container} from './styled';
 
 export default function Home({navigation}) {
   const [list, setList] = useState([]);
@@ -14,15 +15,19 @@ export default function Home({navigation}) {
     loadList();
   }, []);
 
+  function goDetails(obj) {
+    return navigation.navigate('Details', obj);
+  }
+
   return (
     <>
-      <SafeAreaView>
+      <Container>
         <FlatList
           data={list}
           keyExtractor={item => String(item.id)}
-          renderItem={({item}) => <Adlist item={item} />}
+          renderItem={({item}) => <Adlist item={item} navigation={goDetails} />}
         />
-      </SafeAreaView>
+      </Container>
     </>
   );
 }

@@ -1,15 +1,13 @@
 import React from 'react';
-import {Button, SafeAreaView, Text, View} from 'react-native';
+import AdDetails from '../../Components/AdDetails';
+import {Container} from './styled';
 
-export default function Details({navigation}) {
+export default function Details({route}) {
   return (
     <>
-      <SafeAreaView>
-        <View>
-          <Text>Details Page</Text>
-          <Button title="Come Back" onPress={() => navigation.goBack()} />
-        </View>
-      </SafeAreaView>
+      <Container>
+        <AdDetails item={route.params} />
+      </Container>
     </>
   );
 }
