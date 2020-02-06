@@ -1,29 +1,28 @@
-import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {Container, Advertisement, Header, Title, Photo, Value, Button} from './styled';
+import React, {useEffect, useState} from 'react';
+import {FlatList, SafeAreaView} from 'react-native';
+import Adlist from '../../Components/AdList';
+import api from '../../Services/Api';
 
+export default function Home({navigation}) {
+  const [list, setList] = useState([]);
 
-export default function Home({ navigation }){
+  useEffect(() => {
+    async function loadList() {
+      const response = await api.get('/');
+      setList(response.data);
+    }
+    loadList();
+  }, []);
 
-    return(
-        <>
-        <SafeAreaView>
-            <Container>
-                <Advertisement>
-                    <Header>
-                        <Title>Home Page</Title>
-                    </Header>
-                    <Photo />
-                    <Value>R$ 30.000</Value>
-                </Advertisement>
-                
-                <Button 
-                    title='Go Details'
-                    onPress={()=> navigation.navigate('Details')}
-                />
-            </Container>
-        </SafeAreaView>
-        </>
-    )
-  
+  return (
+    <>
+      <SafeAreaView>
+        <FlatList
+          data={list}
+          keyExtractor={item => String(item.id)}
+          renderItem={({item}) => <Adlist item={item} />}
+        />
+      </SafeAreaView>
+    </>
+  );
 }
