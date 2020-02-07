@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import Adlist from '../../Components/AdList';
+import MessageError from '../../Components/MessageError';
+import Loading from '../../Components/Loading';
 import { loadList } from '../../Store/FetchActions';
-import { Container, Loading, Error } from './styled';
+import { Container} from './styled';
 
 
 export default function Home({navigation}) {
@@ -25,7 +27,7 @@ export default function Home({navigation}) {
     <>
     
       <Container>
-        {!error && <Error>Houve um Erro ao Importar os Dados</Error>}
+        {error && <MessageError/>}
         {loading && <Loading />}
        <FlatList
           data={data}

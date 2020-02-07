@@ -6,8 +6,6 @@ export const INITIAL_STATE = {
     error:false
 }
    
-
-
 export const loadRequest = createAction('list/LOAD_REQUEST');
 export const loadSuccess = createAction('list/LOAD_SUCCESS');
 export const loadFailure = createAction('list/LOAD_FAILURE');

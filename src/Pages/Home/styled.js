@@ -5,18 +5,4 @@ export const Container = styled.SafeAreaView`
   flex: 1;
 `;
 
-export const Loading = styled.ActivityIndicator.attrs({
-  size:'large',
-  color:'#008295'
-})`
 
-`
-
-export const Error = styled.Text`
-  font-size:15px;
-  color:#f00;
-  align-items:center;
-  justify-content:center;
-
-
-`;

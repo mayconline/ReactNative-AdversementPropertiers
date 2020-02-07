@@ -6,11 +6,10 @@ export const loadList =  () => {
       await dispatch( loadRequest() )
             try{
                 const response = await api.get('/')
-                await   dispatch( loadSuccess(response.data) )
-
+                await dispatch( loadSuccess(response.data) )
             }
             catch( error ){
-             await   dispatch( loadFailure() )
+             await dispatch( loadFailure() )
               console.log(error)
             }
        

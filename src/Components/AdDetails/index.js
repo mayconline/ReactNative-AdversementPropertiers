@@ -1,7 +1,7 @@
 import React from 'react';
 import {Advertisement, Header, Photo, Title, Value} from './styled';
 
-export default function AdDetails({item}) {
+export default function adDetails({item}) {
   return (
     <>
       <Advertisement>

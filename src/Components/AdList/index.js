@@ -9,7 +9,7 @@ import {
   Value,
 } from './styled';
 
-export default function AdList({navigation, item}) {
+export default function adList({navigation, item}) {
   return (
     <>
       <Advertisement>
