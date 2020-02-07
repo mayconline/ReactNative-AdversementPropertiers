@@ -1,19 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import React, { useEffect } from 'react';
+import { FlatList } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import Adlist from '../../Components/AdList';
-import api from '../../Services/Api';
-import {Container} from './styled';
+import { loadList } from '../../Store/FetchActions';
+import { Container, Loading, Error } from './styled';
+
 
 export default function Home({navigation}) {
-  const [list, setList] = useState([]);
 
-  useEffect(() => {
-    async function loadList() {
-      const response = await api.get('/');
-      setList(response.data);
-    }
-    loadList();
-  }, []);
+  const {data, loading, error} = useSelector(state => state.list)
+  const dispatch = useDispatch();
+
+  
+  useEffect(()=>{
+    dispatch( loadList() );
+  },[dispatch])
+
 
   function goDetails(obj) {
     return navigation.navigate('Details', obj);
@@ -21,9 +23,12 @@ export default function Home({navigation}) {
 
   return (
     <>
+    
       <Container>
-        <FlatList
-          data={list}
+        {!error && <Error>Houve um Erro ao Importar os Dados</Error>}
+        {loading && <Loading />}
+       <FlatList
+          data={data}
           keyExtractor={item => String(item.id)}
           renderItem={({item}) => <Adlist item={item} navigation={goDetails} />}
         />
