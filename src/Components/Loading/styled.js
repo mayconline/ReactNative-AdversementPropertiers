@@ -1,9 +1,6 @@
 import styled from 'styled-components/native';
 
 export const Loading = styled.ActivityIndicator.attrs({
-    size:'large',
-    color:'#008295'
-  })`
-  
-  `
-  
+  size: 'large',
+  color: '#008295',
+})``;

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Loading} from './styled';
+import {Loading} from './styled';
 
-export default function loadingIndicator(){
-    return(
- <Loading />
-    )
-
+export default function loadingIndicator() {
+  return <Loading />;
 }

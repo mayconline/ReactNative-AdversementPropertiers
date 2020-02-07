@@ -20,9 +20,8 @@ export const Title = styled.Text`
 
 export const Value = styled.Text`
   padding: 10px;
-  line-height: 15px;
   color: #444;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
 `;
 

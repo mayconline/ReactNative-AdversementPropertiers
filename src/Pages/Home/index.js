@@ -1,23 +1,19 @@
-import React, { useEffect } from 'react';
-import { FlatList } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useEffect} from 'react';
+import {FlatList} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import Adlist from '../../Components/AdList';
-import MessageError from '../../Components/MessageError';
 import Loading from '../../Components/Loading';
-import { loadList } from '../../Store/FetchActions';
-import { Container} from './styled';
-
+import MessageError from '../../Components/MessageError';
+import {loadList} from '../../Store/FetchActions';
+import {Container} from './styled';
 
 export default function Home({navigation}) {
-
-  const {data, loading, error} = useSelector(state => state.list)
+  const {data, loading, error} = useSelector(state => state.list);
   const dispatch = useDispatch();
 
-  
-  useEffect(()=>{
-    dispatch( loadList() );
-  },[dispatch])
-
+  useEffect(() => {
+    dispatch(loadList());
+  }, [dispatch]);
 
   function goDetails(obj) {
     return navigation.navigate('Details', obj);
@@ -25,11 +21,10 @@ export default function Home({navigation}) {
 
   return (
     <>
-    
       <Container>
-        {error && <MessageError/>}
+        {error && <MessageError />}
         {loading && <Loading />}
-       <FlatList
+        <FlatList
           data={data}
           keyExtractor={item => String(item.id)}
           renderItem={({item}) => <Adlist item={item} navigation={goDetails} />}
