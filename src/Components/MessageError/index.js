@@ -4,7 +4,7 @@ import {Container, Error} from './styled';
 export default function messageError() {
   return (
     <Container>
-      <Error>Houve um Erro ao Importar os Dados</Error>
+      <Error>There was an error importing the data</Error>
     </Container>
   );
 }
